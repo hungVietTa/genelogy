@@ -52,7 +52,8 @@ export default {
 <style lang="scss">
 .VueCarousel-slide {
     img {
-        max-width: 400px;
+        max-width: 600px;
     }
 }
+
 </style>

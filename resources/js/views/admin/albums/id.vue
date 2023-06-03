@@ -9,7 +9,7 @@
             <vue-picture-swipe :items="items"></vue-picture-swipe>
             <template #footer>
                 <div
-                    class="d-flex align-items-center justify-content-around gx-5"
+                    class="d-flex align-items-center justify-content-around gx-5 flex-wrap album"
                 >
                     <b-button variant="info" @click="showUploadModal"
                         >Thêm ảnh mới</b-button
@@ -42,7 +42,7 @@
                         :src="preview.src"
                         :alt="preview.name"
                         width="500"
-                            height="300"
+                        height="300"
                     />
                 </div>
             </div>
@@ -141,7 +141,7 @@ export default {
 
         function updateAlbum(payload) {
             store.dispatch("updateAlbum", payload);
-            store.dispatch("showAlbum", root.$route.params.id)
+            store.dispatch("showAlbum", root.$route.params.id);
         }
 
         function showUploadModal() {
@@ -181,17 +181,13 @@ export default {
             });
 
             try {
-                await axios.post(
-                    `albums/${album.value.id}/images`,
-                    formData,
-                    {
-                        headers: {
-                            "Content-Type": "multipart/form-data"
-                        }
+                await axios.post(`albums/${album.value.id}/images`, formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data"
                     }
-                );
+                });
                 // Success message or additional logic
-                store.dispatch("showAlbum", root.$route.params.id)
+                store.dispatch("showAlbum", root.$route.params.id);
                 uploadModalOpen.value = false;
                 selectedFiles.value = [];
                 imagePreviews.value = [];
@@ -215,7 +211,7 @@ export default {
 
         function deleteAlbum() {
             store.dispatch("deleteAlbum", root.$route.params.id);
-            router.push('/albums')
+            router.push("/albums");
             deleteModalOpen.value = false;
         }
 
@@ -265,6 +261,13 @@ export default {
     img {
         max-width: 400px;
         margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .btn {
+       width: 100% !important;
+       margin-bottom: 10px;
     }
 }
 </style>

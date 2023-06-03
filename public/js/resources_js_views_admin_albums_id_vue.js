@@ -35,9 +35,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -327,7 +324,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
     function deleteAlbum() {
       store.dispatch("deleteAlbum", root.$route.params.id);
-      _router_js__WEBPACK_IMPORTED_MODULE_1__.default.push('/albums');
+      _router_js__WEBPACK_IMPORTED_MODULE_1__.default.push("/albums");
       deleteModalOpen.value = false;
     }
     function showDeleteImagesModal() {
@@ -398,7 +395,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".my-gallery img {\n  max-width: 400px;\n  margin-bottom: 20px;\n}\n.modal-dialog img {\n  max-width: 400px;\n  margin-bottom: 20px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".my-gallery img {\n  max-width: 400px;\n  margin-bottom: 20px;\n}\n.modal-dialog img {\n  max-width: 400px;\n  margin-bottom: 20px;\n}\n@media screen and (max-width: 600px) {\n.btn {\n    width: 100% !important;\n    margin-bottom: 10px;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -611,18 +608,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "b-button",
+    { attrs: { variant: "info" }, on: { click: _vm.openModal } },
     [
-      _c(
-        "b-button",
-        { attrs: { variant: "info" }, on: { click: _vm.openModal } },
-        [
-          _vm._t("default", function() {
-            return [_vm._v("Sửa đổi")]
-          })
-        ],
-        2
-      ),
+      _vm._t("default", function() {
+        return [_vm._v("Sửa đổi")]
+      }),
       _vm._v(" "),
       _c(
         "b-modal",
@@ -683,7 +674,7 @@ var render = function() {
         1
       )
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -735,7 +726,7 @@ var render = function() {
                     "div",
                     {
                       staticClass:
-                        "d-flex align-items-center justify-content-around gx-5"
+                        "d-flex align-items-center justify-content-around gx-5 flex-wrap album"
                     },
                     [
                       _c(

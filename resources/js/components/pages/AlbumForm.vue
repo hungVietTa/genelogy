@@ -1,9 +1,6 @@
 <template>
-    <div>
-        <b-button variant="info" @click="openModal">
-            <slot>Sửa đổi</slot>
-        </b-button>
-
+    <b-button variant="info" @click="openModal">
+        <slot>Sửa đổi</slot>
         <b-modal v-model="showModal" @ok="submitForm" title="Edit Album">
             <b-form>
                 <b-form-group label="Title" label-for="title">
@@ -22,7 +19,7 @@
                 </b-form-group>
             </b-form>
         </b-modal>
-    </div>
+    </b-button>
 </template>
 
 <script>

@@ -19,3 +19,31 @@
     image-rendering: optimize-contrast; /* CSS3 Proposed  */
     -ms-interpolation-mode: nearest-neighbor;
 }
+
+.sidebar.toggled {
+    width: 80px !important;
+    .nav-item .nav-link {
+        width: auto;
+    }
+}
+@media screen and (max-width: 600px) {
+    .VueCarousel-slide {
+    img {
+        max-width: 100% !important;
+    }
+}
+}
+@media screen and (max-width: 600px) {
+    .my-gallery {
+        img {
+            max-width: 100% !important;
+            margin-bottom: 20px;
+        }
+    }
+    .modal-dialog {
+        img {
+            max-width: 100% !important;
+            margin-bottom: 20px;
+        }
+    }
+}
