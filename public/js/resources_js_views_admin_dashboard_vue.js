@@ -180,6 +180,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -1406,8 +1407,6 @@ var render = function() {
     "div",
     { staticClass: "member-card" },
     [
-      _c("h3", [_vm._v(_vm._s(_vm.previewUrl))]),
-      _vm._v(" "),
       _c(
         "b-button",
         { attrs: { variant: "info" }, on: { click: _vm.showModal } },
@@ -1418,7 +1417,7 @@ var render = function() {
         "b-modal",
         {
           attrs: {
-            title: "Form Modal",
+            title: "Thành viên",
             size: "lg",
             "footer-class": "justify-content-between"
           },
@@ -1475,16 +1474,16 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("Cancel")]
+                        [_vm._v("Quay lại")]
                       ),
                       _vm._v(" "),
                       _c(
                         "b-button",
                         {
-                          attrs: { variant: "primary" },
+                          attrs: { variant: "info" },
                           on: { click: _vm.submitForm }
                         },
-                        [_vm._v("Submit")]
+                        [_vm._v("Xác nhận")]
                       )
                     ],
                     1
@@ -1536,7 +1535,7 @@ var render = function() {
                           key: "file-name",
                           fn: function() {
                             return [
-                              _c("strong", [_vm._v("Selected file:")]),
+                              _c("strong", [_vm._v("Chọn ảnh:")]),
                               _vm._v(
                                 "\n                            " +
                                   _vm._s(
@@ -1573,7 +1572,7 @@ var render = function() {
                     [
                       _c(
                         "b-form-group",
-                        { attrs: { id: "idFormGroup", label: "ID" } },
+                        { attrs: { label: "ID" } },
                         [
                           _c("b-form-input", {
                             attrs: { disabled: "" },
@@ -1598,7 +1597,7 @@ var render = function() {
                     [
                       _c(
                         "b-form-group",
-                        { attrs: { id: "nameFormGroup", label: "Name" } },
+                        { attrs: { label: "Họ và tên" } },
                         [
                           _c("b-form-input", {
                             model: {
@@ -1628,19 +1627,16 @@ var render = function() {
                     [
                       _c(
                         "b-form-group",
-                        {
-                          attrs: {
-                            id: "parent_idFormGroup",
-                            label: "Parent ID"
-                          }
-                        },
+                        { attrs: { label: "Con của ông/bà" } },
                         [
                           _vm.formValue.parent_id || !_vm.formValue.id
                             ? _c("vue-select", {
                                 attrs: {
                                   options: _vm.parentOptions,
                                   disabled:
-                                    !_vm.ancestor.parent_id && _vm.formValue.id,
+                                    (!_vm.ancestor.parent_id &&
+                                      _vm.formValue.id) ||
+                                    _vm.formValue.spouse_id,
                                   label: "name",
                                   filterable: true,
                                   reduce: _vm.reduceOption
@@ -1686,9 +1682,10 @@ var render = function() {
                     [
                       _c(
                         "b-form-group",
-                        { attrs: { id: "nthFormGroup", label: "Nth" } },
+                        { attrs: { label: "Là con thứ: " } },
                         [
                           _c("b-form-input", {
+                            attrs: { type: "number" },
                             model: {
                               value: _vm.formValue.nth,
                               callback: function($$v) {
@@ -1719,7 +1716,7 @@ var render = function() {
                         {
                           attrs: {
                             id: "spouse_idFormGroup",
-                            label: "Spouse ID"
+                            label: "( Dâu/Rể ) Là vợ chồng của:"
                           }
                         },
                         [
@@ -1728,6 +1725,7 @@ var render = function() {
                                 attrs: {
                                   options: _vm.spouseOptions,
                                   label: "name",
+                                  disabled: _vm.formValue.parent_id,
                                   filterable: true,
                                   reduce: _vm.reduceOption
                                 },
@@ -1767,7 +1765,7 @@ var render = function() {
                     [
                       _c(
                         "b-form-group",
-                        { attrs: { id: "genderFormGroup", label: "Gender" } },
+                        { attrs: { label: "Nam nữ" } },
                         [
                           _c(
                             "b-form-select",
@@ -1809,7 +1807,7 @@ var render = function() {
       _c(
         "b-modal",
         {
-          attrs: { title: "Confirmation", "ok-only": "" },
+          attrs: { title: "Alert", "ok-only": "" },
           on: { ok: _vm.undo },
           model: {
             value: _vm.modalDestroyShow,
@@ -1819,7 +1817,7 @@ var render = function() {
             expression: "modalDestroyShow"
           }
         },
-        [_vm._v("\n        Are you sure you want to destroy this item?\n    ")]
+        [_vm._v("\n        Bạn thực sự muốn thực hiện hành động này ?\n    ")]
       )
     ],
     1

@@ -516,7 +516,7 @@ var render = function() {
         { attrs: { variant: "info" }, on: { click: _vm.openModal } },
         [
           _vm._t("default", function() {
-            return [_vm._v("Edit")]
+            return [_vm._v("Sửa đổi")]
           })
         ],
         2
@@ -623,7 +623,7 @@ var render = function() {
           fn: function() {
             return [
               _c("router-link", { attrs: { to: "/albums/" + _vm.album.id } }, [
-                _vm._v("View Details")
+                _vm._v("Chi tiết")
               ])
             ]
           },
@@ -695,7 +695,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Create New")]
+            [_vm._v("Tạo album mới")]
           )
         ],
         1

@@ -347,7 +347,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return store.dispatch("deleteImages", selectedImages.value);
               case 2:
                 store.dispatch("showAlbum", root.$route.params.id);
-              case 3:
+                deleteImagesModalOpen.value = false;
+              case 4:
               case "end":
                 return _context2.stop();
             }
@@ -617,7 +618,7 @@ var render = function() {
         { attrs: { variant: "info" }, on: { click: _vm.openModal } },
         [
           _vm._t("default", function() {
-            return [_vm._v("Edit")]
+            return [_vm._v("Sửa đổi")]
           })
         ],
         2
@@ -743,7 +744,7 @@ var render = function() {
                           attrs: { variant: "info" },
                           on: { click: _vm.showUploadModal }
                         },
-                        [_vm._v("Add New Images")]
+                        [_vm._v("Thêm ảnh mới")]
                       ),
                       _vm._v(" "),
                       _c("edit-album", {
@@ -761,7 +762,7 @@ var render = function() {
                               staticClass: "text-white",
                               attrs: { to: "/albums" }
                             },
-                            [_vm._v("Back to Albums")]
+                            [_vm._v("Quay lại")]
                           )
                         ],
                         1
@@ -773,7 +774,7 @@ var render = function() {
                           attrs: { variant: "danger" },
                           on: { click: _vm.showDeleteModal }
                         },
-                        [_vm._v("Delete Album")]
+                        [_vm._v("Xoá album")]
                       ),
                       _vm._v(" "),
                       _c(
@@ -782,7 +783,7 @@ var render = function() {
                           attrs: { variant: "danger" },
                           on: { click: _vm.showDeleteImagesModal }
                         },
-                        [_vm._v("Delete Images")]
+                        [_vm._v("Xoá ảnh")]
                       )
                     ],
                     1
@@ -815,7 +816,7 @@ var render = function() {
                           attrs: { variant: "info" },
                           on: { click: _vm.uploadImages }
                         },
-                        [_vm._v("OK")]
+                        [_vm._v("Xác nhận")]
                       ),
                       _vm._v(" "),
                       _c(
@@ -824,7 +825,7 @@ var render = function() {
                           staticClass: "btn btn-info",
                           attrs: { to: "/albums" }
                         },
-                        [_vm._v("Back to Albums")]
+                        [_vm._v("Quay lại")]
                       )
                     ],
                     1
@@ -887,7 +888,7 @@ var render = function() {
                           attrs: { variant: "primary" },
                           on: { click: _vm.deleteAlbum }
                         },
-                        [_vm._v("Delete")]
+                        [_vm._v("Đồng ý")]
                       ),
                       _vm._v(" "),
                       _c(
@@ -900,7 +901,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("Cancel")]
+                        [_vm._v("Quay lại")]
                       )
                     ],
                     1
@@ -918,7 +919,7 @@ var render = function() {
             expression: "deleteModalOpen"
           }
         },
-        [_c("div", [_vm._v("Are you sure you want to delete this album?")])]
+        [_c("div", [_vm._v("Bạn có thực sự muốn xoá album này")])]
       ),
       _vm._v(" "),
       _c(
@@ -939,7 +940,7 @@ var render = function() {
                           attrs: { variant: "primary" },
                           on: { click: _vm.deleteImages }
                         },
-                        [_vm._v("Delete")]
+                        [_vm._v("Xác nhận")]
                       ),
                       _vm._v(" "),
                       _c(
@@ -952,7 +953,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("Cancel")]
+                        [_vm._v("Quay lại")]
                       )
                     ],
                     1

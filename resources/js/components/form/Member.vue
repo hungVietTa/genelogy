@@ -4,7 +4,7 @@
 
         <b-modal
             v-model="modalShow"
-            title="Form Modal"
+            title="Thành viên"
             size="lg"
             footer-class="justify-content-between"
             @close="$emit('toggleModal', false)"
@@ -34,7 +34,7 @@
                             class="mb-3"
                         >
                             <template v-slot:file-name>
-                                <strong>Selected file:</strong>
+                                <strong>Chọn ảnh:</strong>
                                 {{
                                     selectedFile
                                         ? selectedFile.name
@@ -46,7 +46,7 @@
                 </b-row>
                 <b-row>
                     <b-col md="6">
-                        <b-form-group id="idFormGroup" label="ID">
+                        <b-form-group label="ID">
                             <b-form-input
                                 v-model="formValue.id"
                                 disabled
@@ -54,7 +54,7 @@
                         </b-form-group>
                     </b-col>
                     <b-col md="6">
-                        <b-form-group id="nameFormGroup" label="Name">
+                        <b-form-group label="Họ và tên">
                             <b-form-input
                                 v-model="formValue.name"
                             ></b-form-input>
@@ -63,12 +63,12 @@
                 </b-row>
                 <b-row>
                     <b-col md="6">
-                        <b-form-group id="parent_idFormGroup" label="Parent ID">
+                        <b-form-group label="Con của ông/bà">
                             <vue-select
                                 v-if="formValue.parent_id || !formValue.id"
                                 v-model="formValue.parent_id"
                                 :options="parentOptions"
-                                :disabled="!ancestor.parent_id && formValue.id"
+                                :disabled="!ancestor.parent_id && formValue.id || formValue.spouse_id"
                                 label="name"
                                 :filterable="true"
                                 :reduce="reduceOption"
@@ -86,8 +86,9 @@
                         </b-form-group>
                     </b-col>
                     <b-col md="6">
-                        <b-form-group id="nthFormGroup" label="Nth">
+                        <b-form-group label="Là con thứ: ">
                             <b-form-input
+                            type="number"
                                 v-model="formValue.nth"
                             ></b-form-input>
                         </b-form-group>
@@ -95,12 +96,13 @@
                 </b-row>
                 <b-row>
                     <b-col md="6">
-                        <b-form-group id="spouse_idFormGroup" label="Spouse ID">
+                        <b-form-group id="spouse_idFormGroup" label="( Dâu/Rể ) Là vợ chồng của:">
                             <vue-select
                                 v-if="formValue.spouse_id || !formValue.id"
                                 v-model="formValue.spouse_id"
                                 :options="spouseOptions"
                                 label="name"
+                                :disabled="formValue.parent_id"
                                 :filterable="true"
                                 :reduce="reduceOption"
                             ></vue-select>
@@ -114,7 +116,7 @@
                         </b-form-group>
                     </b-col>
                     <b-col md="6">
-                        <b-form-group id="genderFormGroup" label="Gender">
+                        <b-form-group label="Nam nữ">
                             <b-form-select v-model="formValue.gender">
                                 <option value="1">Nam</option>
                                 <option value="2">Nữ</option>
@@ -134,10 +136,10 @@
                     <b-button
                         variant="secondary"
                         @click="$emit('toggleModal', false)"
-                        >Cancel</b-button
+                        >Quay lại</b-button
                     >
-                    <b-button variant="primary" @click="submitForm"
-                        >Submit</b-button
+                    <b-button variant="info" @click="submitForm"
+                        >Xác nhận</b-button
                     >
                 </div>
             </template>
@@ -145,11 +147,11 @@
 
         <b-modal
             v-model="modalDestroyShow"
-            title="Confirmation"
+            title="Alert"
             ok-only
             @ok="undo"
         >
-            Are you sure you want to destroy this item?
+            Bạn thực sự muốn thực hiện hành động này ?
         </b-modal>
     </div>
 </template>

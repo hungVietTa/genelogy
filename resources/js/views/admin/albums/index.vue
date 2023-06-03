@@ -12,7 +12,7 @@
             <CreateAlbum
                 @update-album="$event => onCreate($event)"
                 :album="{}"
-                >Create New</CreateAlbum
+                >Tạo album mới</CreateAlbum
             >
         </div>
     </div>

@@ -12,7 +12,7 @@
                     class="d-flex align-items-center justify-content-around gx-5"
                 >
                     <b-button variant="info" @click="showUploadModal"
-                        >Add New Images</b-button
+                        >Thêm ảnh mới</b-button
                     >
                     <edit-album
                         :album="album"
@@ -20,14 +20,14 @@
                     ></edit-album>
                     <b-button variant="info">
                         <router-link to="/albums" class="text-white"
-                            >Back to Albums</router-link
+                            >Quay lại</router-link
                         >
                     </b-button>
                     <b-button variant="danger" @click="showDeleteModal"
-                        >Delete Album</b-button
+                        >Xoá album</b-button
                     >
                     <b-button variant="danger" @click="showDeleteImagesModal"
-                        >Delete Images</b-button
+                        >Xoá ảnh</b-button
                     >
                 </div>
             </template>
@@ -49,10 +49,10 @@
             <template #modal-footer>
                 <div>
                     <b-button variant="info" @click="uploadImages"
-                        >OK</b-button
+                        >Xác nhận</b-button
                     >
                     <router-link to="/albums" class="btn btn-info"
-                        >Back to Albums</router-link
+                        >Quay lại</router-link
                     >
                 </div>
             </template>
@@ -60,16 +60,16 @@
 
         <!-- DELETE ALBUM -->
         <b-modal v-model="deleteModalOpen" title="Confirm Delete">
-            <div>Are you sure you want to delete this album?</div>
+            <div>Bạn có thực sự muốn xoá album này</div>
             <template #modal-footer>
                 <div>
                     <b-button variant="primary" @click="deleteAlbum"
-                        >Delete</b-button
+                        >Đồng ý</b-button
                     >
                     <b-button
                         variant="secondary"
                         @click="deleteModalOpen = false"
-                        >Cancel</b-button
+                        >Quay lại</b-button
                     >
                 </div>
             </template>
@@ -98,12 +98,12 @@
             <template #modal-footer>
                 <div>
                     <b-button variant="primary" @click="deleteImages"
-                        >Delete</b-button
+                        >Xác nhận</b-button
                     >
                     <b-button
                         variant="secondary"
                         @click="deleteImagesModalOpen = false"
-                        >Cancel</b-button
+                        >Quay lại</b-button
                     >
                 </div>
             </template>
@@ -228,6 +228,7 @@ export default {
             await store.dispatch("deleteImages", selectedImages.value);
 
             store.dispatch("showAlbum", root.$route.params.id);
+            deleteImagesModalOpen.value = false;
         }
 
         return {

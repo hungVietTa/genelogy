@@ -128,7 +128,7 @@ class AncestorController extends Controller
 
     $ancestor = Ancestor::create($data);
 
-        return response($ancestor);
+        return response(['message' => 'Tạo thành công']);
     }
 
     public function show($id)
@@ -163,7 +163,7 @@ class AncestorController extends Controller
 
     $ancestor->update($data);
 
-    return response()->json($ancestor, 200);
+    return response()->json(['message' => 'Cập nhật thành công'], 200);
 }
 
 public function undo($id)
@@ -174,11 +174,11 @@ public function undo($id)
     $ancestor = Ancestor::findOrFail($id);
 
     // Check if the ancestor has no spouse and no children
-    if (!$ancestor->spouse && !$ancestor->children()->exists()) {
+    if (!$ancestor->children()->exists()) {
         $ancestor->delete();
-        return response()->json(['message' => 'Ancestor deleted successfully'], 200);
+        return response()->json(['message' => 'Thành công'], 200);
     }
 
-    return response()->json(['message' => 'Ancestor has spouse or children. Deletion not allowed.'], 422);
+    return response()->json(['message' => 'Không thể thực hiện hành động này vì còn người phụ thuộc'], 422);
 }
 }

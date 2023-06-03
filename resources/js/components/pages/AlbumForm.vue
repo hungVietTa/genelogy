@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-button variant="info" @click="openModal">
-            <slot>Edit</slot>
+            <slot>Sửa đổi</slot>
         </b-button>
 
         <b-modal v-model="showModal" @ok="submitForm" title="Edit Album">

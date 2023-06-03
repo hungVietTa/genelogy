@@ -9,7 +9,7 @@
             </slide>
         </carousel>
         <template v-slot:footer>
-            <router-link :to="`/albums/${album.id}`">View Details</router-link>
+            <router-link :to="`/albums/${album.id}`">Chi tiết</router-link>
         </template>
     </b-card>
 </template>
