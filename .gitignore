@@ -5,7 +5,6 @@
 /storage/css
 /storage/js
 /storage/fonts
-/vendor
 .env
 .env.backup
 .phpunit.result.cache
