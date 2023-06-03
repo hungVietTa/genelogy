@@ -395,7 +395,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".my-gallery img {\n  max-width: 400px;\n  margin-bottom: 20px;\n}\n.modal-dialog img {\n  max-width: 400px;\n  margin-bottom: 20px;\n}\n@media screen and (max-width: 600px) {\n.btn {\n    width: 100% !important;\n    margin-bottom: 10px;\n}\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (max-width: 600px) {\n.btn {\n    width: 100% !important;\n    margin-bottom: 10px;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

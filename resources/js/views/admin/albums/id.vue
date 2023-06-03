@@ -251,18 +251,6 @@ export default {
 </script>
 
 <style lang="scss">
-.my-gallery {
-    img {
-        max-width: 400px;
-        margin-bottom: 20px;
-    }
-}
-.modal-dialog {
-    img {
-        max-width: 400px;
-        margin-bottom: 20px;
-    }
-}
 
 @media screen and (max-width: 600px) {
     .btn {

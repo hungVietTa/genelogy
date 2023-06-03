@@ -221,7 +221,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".VueCarousel-slide img {\n  max-width: 600px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".VueCarousel-inner {\n  align-items: center;\n  gap: 10px;\n}\n.VueCarousel-inner .VueCarousel-slide {\n  flex-grow: unset;\n  flex-shrink: unset;\n  flex-basis: unset;\n}\n.VueCarousel-inner .VueCarousel-slide img {\n  max-width: 300px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

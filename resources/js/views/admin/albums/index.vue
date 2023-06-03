@@ -50,10 +50,19 @@ export default {
 </script>
 
 <style lang="scss">
-.VueCarousel-slide {
+.VueCarousel-inner {
+    align-items: center;
+    gap:10px;
+
+    .VueCarousel-slide {
+    flex-grow: unset;
+    flex-shrink: unset;
+    flex-basis: unset;
     img {
-        max-width: 600px;
+        max-width: 300px;
     }
 }
+}
+
 
 </style>

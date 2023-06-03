@@ -180,7 +180,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 
@@ -1492,7 +1491,6 @@ var render = function() {
                     _vm._v(" "),
                     _c("b-form-file", {
                       staticClass: "mb-3",
-                      attrs: { accept: ".jpg,.jpeg,.png" },
                       on: { change: _vm.handleFileChange },
                       scopedSlots: _vm._u([
                         {
