@@ -19,7 +19,7 @@
 
 
       <li class="nav-item active">
-        <router-link class="nav-link" to="/admin">
+        <router-link class="nav-link" to="/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>MENU</span></router-link
         >
@@ -123,7 +123,7 @@
       </li> -->
 
       <li class="nav-item">
-        <router-link class="nav-link" to="/">
+        <router-link class="nav-link" to="/genelogy">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Gia phả</span></router-link
         >

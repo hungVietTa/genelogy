@@ -12,7 +12,16 @@ let router = new Router({
         {
             path: "/",
             name: "home",
-            component: () => import("./views/admin/dashboard.vue"),
+            component: () => import("./views/admin/index.vue"),
+            meta: {
+                requiresAuth: true,
+                layout: AdminLayout
+            }
+        },
+        {
+            path: "/genelogy",
+            name: "genelogy",
+            component: () => import("./views/admin/genelogy.vue"),
             meta: {
                 requiresAuth: true,
                 layout: AdminLayout
@@ -123,15 +132,6 @@ let router = new Router({
             path: "/admin/pages/page-not-found",
             name: "page-not-found",
             component: () => import("./views/admin/page-not-found.vue"),
-            meta: {
-                requiresAuth: true,
-                layout: AdminLayout
-            }
-        },
-        {
-            path: "/admin/pages/blank",
-            name: "blank",
-            component: () => import("./views/admin/blank.vue"),
             meta: {
                 requiresAuth: true,
                 layout: AdminLayout
