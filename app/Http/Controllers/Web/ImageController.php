@@ -37,7 +37,7 @@ class ImageController extends Controller
     $album = Album::findOrFail($id);
 
     $validatedData = $request->validate([
-        'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:10000',
     ]);
 
     $images = [];
