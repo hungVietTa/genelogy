@@ -12,7 +12,29 @@ let router = new Router({
         {
             path: "/",
             name: "home",
-            component: () => import("./views/home/index.vue")
+            component: () => import("./views/admin/dashboard.vue"),
+            meta: {
+                requiresAuth: true,
+                layout: AdminLayout
+            }
+        },
+        {
+            path: "/albums",
+            name: "albums",
+            component: () => import("./views/admin/albums/index.vue"),
+            meta: {
+                requiresAuth: true,
+                layout: AdminLayout
+            }
+        },
+        {
+            path: "/albums/:id",
+            name: "albums details",
+            component: () => import("./views/admin/albums/id.vue"),
+            meta: {
+                requiresAuth: true,
+                layout: AdminLayout
+            }
         },
         {
             path: "/login/:user_id?",
@@ -43,15 +65,6 @@ let router = new Router({
         /**
          * Admin routes
          */
-        {
-            path: "/admin",
-            name: "admin",
-            component: () => import("./views/admin/dashboard.vue"),
-            meta: {
-                requiresAuth: true,
-                layout: AdminLayout
-            }
-        },
         {
             path: "/admin/components/buttons",
             name: "buttons",
@@ -145,16 +158,16 @@ let router = new Router({
     ]
 });
 
-router.beforeEach((to, from, next) => {
-    if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (store.getters.user) {
-            next();
-            return;
-        }
-        next("/login");
-    } else {
-        next();
-    }
-});
+// router.beforeEach((to, from, next) => {
+//     if (to.matched.some(record => record.meta.requiresAuth)) {
+//         if (store.getters.user) {
+//             next();
+//             return;
+//         }
+//         next("/login");
+//     } else {
+//         next();
+//     }
+// });
 
 export default router;

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddEmailVerifiedAtToUsersTable extends Migration
+class AddImgUrlToAncestorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddEmailVerifiedAtToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->timestamp('email_verified_at', $precision = 0)->nullable()->after('email');
+        Schema::table('ancestors', function (Blueprint $table) {
+            $table->string('img_url')->nullable();
         });
     }
 
@@ -25,7 +25,7 @@ class AddEmailVerifiedAtToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('ancestors', function (Blueprint $table) {
             //
         });
     }

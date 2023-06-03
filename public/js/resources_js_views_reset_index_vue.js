@@ -18,64 +18,62 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_notify_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/notify.js */ "./resources/js/utils/notify.js");
 /* harmony import */ var _components_Nav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Nav */ "./resources/js/components/Nav.vue");
 
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -93,7 +91,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     reset: function reset() {
       var _this = this;
-
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         var response, toast;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -107,7 +104,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   password_confirm: _this.password_confirm,
                   token: _this.$route.params.token
                 });
-
               case 3:
                 response = _context.sent;
                 toast = _this.$toasted.show("Password updated successfully", {
@@ -115,17 +111,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   position: "top-right",
                   duration: 5000
                 });
-
                 _this.$router.push("/login");
-
                 _context.next = 11;
                 break;
-
               case 8:
                 _context.prev = 8;
                 _context.t0 = _context["catch"](0);
                 _utils_notify_js__WEBPACK_IMPORTED_MODULE_2__.authError(_context.t0);
-
               case 11:
               case "end":
                 return _context.stop();
@@ -155,12 +147,10 @@ function authError(error) {
   var detailedMessages = [];
   var errorMessage = error.response.data.message || "The given data was invalid.";
   errorMessages.push(errorMessage);
-
   if (error.response.data.errors) {
     detailedMessages = [].concat.apply([], Object.values(error.response.data.errors));
     errorMessages = errorMessages.concat(detailedMessages);
   }
-
   errorMessages.forEach(function (message) {
     var toast = Vue.toasted.show(message, {
       theme: "toasted-primary",

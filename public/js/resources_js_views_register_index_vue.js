@@ -23,6 +23,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "LoadingButton",
   props: {
@@ -52,100 +53,98 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Nav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Nav */ "./resources/js/components/Nav.vue");
 /* harmony import */ var _components_LoadingButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/LoadingButton */ "./resources/js/components/LoadingButton.vue");
 
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -169,7 +168,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     register: function register() {
       var _this = this;
-
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         var response, message, toast;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -186,33 +184,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   password: _this.password,
                   password_confirm: _this.password_confirm
                 });
-
               case 4:
                 response = _context.sent;
                 _this.isLoading = false;
-
                 if (response.data.must_verify_email) {
                   _this.$router.push("/verify/user/".concat(response.data.id));
                 } else {
-                  message = "You account has been successfully create. Please Log in.";
+                  message = "Your account has been created successfully. Please Log in.";
                   toast = Vue.toasted.show(message, {
                     theme: "toasted-primary",
                     position: "top-right",
                     duration: 5000
                   });
-
                   _this.$router.push("/login");
                 }
-
                 _context.next = 13;
                 break;
-
               case 9:
                 _context.prev = 9;
                 _context.t0 = _context["catch"](1);
                 _utils_notify_js__WEBPACK_IMPORTED_MODULE_2__.authError(_context.t0);
                 _this.isLoading = false;
-
               case 13:
               case "end":
                 return _context.stop();
@@ -242,12 +234,10 @@ function authError(error) {
   var detailedMessages = [];
   var errorMessage = error.response.data.message || "The given data was invalid.";
   errorMessages.push(errorMessage);
-
   if (error.response.data.errors) {
     detailedMessages = [].concat.apply([], Object.values(error.response.data.errors));
     errorMessages = errorMessages.concat(detailedMessages);
   }
-
   errorMessages.forEach(function (message) {
     var toast = Vue.toasted.show(message, {
       theme: "toasted-primary",

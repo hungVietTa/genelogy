@@ -1,5 +1,5 @@
 <template>
-  <div
+  <div v-if="user"
     class="
       navbar navbar-expand navbar-light
       bg-white
