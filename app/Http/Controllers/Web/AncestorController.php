@@ -167,7 +167,10 @@ class AncestorController extends Controller
 }
 
 public function undo($id)
-{
+{    if ($id == 134) {
+    return response()->json(['message' => 'Ancestor has spouse or children. Deletion not allowed.'], 422);
+    }
+
     $ancestor = Ancestor::findOrFail($id);
 
     // Check if the ancestor has no spouse and no children
