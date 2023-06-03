@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use Intervention\Image\Facades\Image as InterventionImage;
 use App\Models\Album;
 use App\Models\Image;
 use Illuminate\Http\Request;
@@ -43,8 +44,16 @@ class ImageController extends Controller
     $images = [];
 
     foreach ($request->file('images') as $imageFile) {
-        $path = $imageFile->store('images', 'public'); // Specify the "public/images" directory
-        $image = new Image(['path' => Storage::url($path)]);
+        // Generate a unique filename for the image
+        $filename = uniqid() . '.' . $imageFile->getClientOriginalExtension();
+
+        // Compress the original image with lower quality
+        $compressedImage = InterventionImage::make($imageFile)->encode('jpg', 80);
+        $compressedPath = 'public/images/compressed/' . $filename;
+        Storage::put($compressedPath, $compressedImage);
+
+        // Create a new CustomImage model instance and associate it with the album
+        $image = new Image(['path' => Storage::url($compressedPath)]);
         $images[] = $album->images()->save($image);
     }
 

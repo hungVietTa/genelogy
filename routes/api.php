@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api;
 use App\Http\Controllers\Web;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image as InterventionImage;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,9 +57,16 @@ Route::post('/upload', function (Request $request) {
 
     if ($request->hasFile('image')) {
         $image = $request->file('image');
-        $imagePath = $image->store('images', 'public'); // Store the image in the storage/app/public/images directory
 
-        return response()->json(['imagePath' => Storage::url($imagePath)]);
+        // Generate a unique filename for the image
+        $filename = uniqid() . '.' . $image->getClientOriginalExtension();
+
+        // Compress the original image with lower quality
+        $compressedImage = InterventionImage::make($image)->encode('jpg', 80);
+        $compressedPath = 'public/images/compressed/' . $filename;
+        Storage::put($compressedPath, $compressedImage);
+
+        return response()->json(['imagePath' => Storage::url($compressedPath)]);
     }
 
     return response()->json(['error' => 'Image upload failed.'], 400);
