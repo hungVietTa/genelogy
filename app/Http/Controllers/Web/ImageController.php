@@ -43,7 +43,7 @@ class ImageController extends Controller
     $images = [];
 
     foreach ($request->file('images') as $imageFile) {
-        $path = $imageFile->store('public/images'); // Specify the "public/images" directory
+        $path = $imageFile->store('images', 'public'); // Specify the "public/images" directory
         $image = new Image(['path' => Storage::url($path)]);
         $images[] = $album->images()->save($image);
     }

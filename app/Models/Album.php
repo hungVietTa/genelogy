@@ -10,9 +10,20 @@ class Album extends Model
     protected $guarded = ['id'];
 
     public function images()
-{
-    return $this->hasMany(Image::class);
-}
+    {
+        return $this->hasMany(Image::class);
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        // Define the deleting event
+        static::deleting(function ($album) {
+            // Delete the associated images
+            $album->images()->delete();
+        });
+    }
 
     use HasFactory;
 }
