@@ -9,7 +9,9 @@
         </AlbumList>
 
         <div class="mb-4 text-center">
-            <CreateAlbum @update-album="$event => createAlbum($event.albumData)" :album="{}"
+            <CreateAlbum
+                @update-album="$event => onCreate($event)"
+                :album="{}"
                 >Create New</CreateAlbum
             >
         </div>
@@ -36,9 +38,21 @@ export default {
             "updateAlbum",
             "deleteAlbum"
         ]),
+        async onCreate(form) {
+            await this.createAlbum(form.albumData);
+            this.fetchAlbums();
+        }
     },
     mounted() {
         this.fetchAlbums();
     }
 };
 </script>
+
+<style lang="scss">
+.VueCarousel-slide {
+    img {
+        max-width: 400px;
+    }
+}
+</style>

@@ -16,6 +16,7 @@ const albumModule = {
             context.commit("setAlbums", response.data.albums);
         },
         createAlbum: async (context, albumData) => {
+          console.log(albumData)
             const response = await axios.post("albums", albumData);
             context.commit("addAlbum", response.data.album);
             context.dispatch("fetchAlbums");

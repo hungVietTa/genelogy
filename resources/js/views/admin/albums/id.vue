@@ -141,6 +141,7 @@ export default {
 
         function updateAlbum(payload) {
             store.dispatch("updateAlbum", payload);
+            store.dispatch("showAlbum", root.$route.params.id)
         }
 
         function showUploadModal() {
@@ -190,6 +191,7 @@ export default {
                     }
                 );
                 // Success message or additional logic
+                store.dispatch("showAlbum", root.$route.params.id)
                 uploadModalOpen.value = false;
                 selectedFiles.value = [];
                 imagePreviews.value = [];
@@ -251,6 +253,17 @@ export default {
 };
 </script>
 
-<style>
-/* Your styles */
+<style lang="scss">
+.my-gallery {
+    img {
+        max-width: 400px;
+        margin-bottom: 20px;
+    }
+}
+.modal-dialog {
+    img {
+        max-width: 400px;
+        margin-bottom: 20px;
+    }
+}
 </style>
