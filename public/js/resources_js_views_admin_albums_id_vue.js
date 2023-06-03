@@ -214,6 +214,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -286,7 +288,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
                 _context.prev = 2;
                 _context.next = 5;
-                return axios__WEBPACK_IMPORTED_MODULE_3___default().post("http://127.0.0.1:8000/api/albums/".concat(album.value.id, "/images"), formData, {
+                return axios__WEBPACK_IMPORTED_MODULE_3___default().post("albums/".concat(album.value.id, "/images"), formData, {
                   headers: {
                     "Content-Type": "multipart/form-data"
                   }
@@ -393,7 +395,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Your styles */\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Your styles */\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -796,7 +798,7 @@ var render = function() {
       _c(
         "b-modal",
         {
-          attrs: { title: "Add Images" },
+          attrs: { title: "Add Images", size: "xl" },
           scopedSlots: _vm._u([
             {
               key: "modal-footer",
@@ -814,9 +816,14 @@ var render = function() {
                         [_vm._v("OK")]
                       ),
                       _vm._v(" "),
-                      _c("router-link", { attrs: { to: "/albums" } }, [
-                        _vm._v("Back to Albums")
-                      ])
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "btn btn-info",
+                          attrs: { to: "/albums" }
+                        },
+                        [_vm._v("Back to Albums")]
+                      )
                     ],
                     1
                   )
@@ -848,8 +855,8 @@ var render = function() {
                     attrs: {
                       src: preview.src,
                       alt: preview.name,
-                      width: "100",
-                      height: "100"
+                      width: "500",
+                      height: "300"
                     }
                   })
                 ])
@@ -976,7 +983,7 @@ var render = function() {
                         expression: "selectedImages"
                       }
                     ],
-                    attrs: { type: "checkbox" },
+                    attrs: { type: "checkbox", width: "500", height: "300" },
                     domProps: {
                       value: image.id,
                       checked: Array.isArray(_vm.selectedImages)

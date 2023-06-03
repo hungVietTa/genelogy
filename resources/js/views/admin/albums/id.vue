@@ -34,15 +34,15 @@
         </b-card>
 
         <!-- UPLOAD IMAGES -->
-        <b-modal v-model="uploadModalOpen" title="Add Images">
+        <b-modal v-model="uploadModalOpen" title="Add Images" size="xl">
             <div>
                 <input type="file" multiple @change="handleFileInputChange" />
                 <div v-for="preview in imagePreviews" :key="preview.id">
                     <img
                         :src="preview.src"
                         :alt="preview.name"
-                        width="100"
-                        height="100"
+                        width="500"
+                            height="300"
                     />
                 </div>
             </div>
@@ -51,7 +51,7 @@
                     <b-button variant="info" @click="uploadImages"
                         >OK</b-button
                     >
-                    <router-link to="/albums"
+                    <router-link to="/albums" class="btn btn-info"
                         >Back to Albums</router-link
                     >
                 </div>
@@ -88,6 +88,8 @@
                             type="checkbox"
                             v-model="selectedImages"
                             :value="image.id"
+                            width="500"
+                            height="300"
                         />
                     </label>
                     <img :src="image.url" alt="" />
@@ -179,7 +181,7 @@ export default {
 
             try {
                 await axios.post(
-                    `http://127.0.0.1:8000/api/albums/${album.value.id}/images`,
+                    `albums/${album.value.id}/images`,
                     formData,
                     {
                         headers: {
