@@ -30,7 +30,6 @@
                         <b-form-file
                             v-model="selectedFile"
                             @change="handleFileChange"
-                            accept=".jpg,.jpeg,.png"
                             class="mb-3"
                         >
                             <template v-slot:file-name>
