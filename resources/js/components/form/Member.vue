@@ -1,6 +1,5 @@
 <template>
     <div class="member-card">
-        <h3>{{ previewUrl }}</h3>
         <b-button variant="info" @click="showModal">Thêm thành viên</b-button>
 
         <b-modal
