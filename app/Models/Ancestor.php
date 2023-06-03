@@ -17,6 +17,14 @@ class Ancestor extends Model
             if ($ancestor->parent_id) {
                 $ancestor->direct = true;
             }
+            // Update parent_in_law_id if parent_id is null
+            elseif (!$ancestor->parent_id && $ancestor->spouse_id) {
+            $spouse = self::find($ancestor->spouse_id);
+            if ($spouse) {
+                $ancestor->parent_in_law_id = $spouse->parent_id;
+            }
+        }
+
         });
     }
 

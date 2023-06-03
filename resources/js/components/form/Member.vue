@@ -68,7 +68,7 @@
                                 v-if="formValue.parent_id || !formValue.id"
                                 v-model="formValue.parent_id"
                                 :options="parentOptions"
-                                :disabled="!ancestor.parent_id && formValue.id || formValue.spouse_id"
+                                :disabled="!ancestor.parent_id && !!formValue.id || !!formValue.spouse_id"
                                 label="name"
                                 :filterable="true"
                                 :reduce="reduceOption"
@@ -102,7 +102,7 @@
                                 v-model="formValue.spouse_id"
                                 :options="spouseOptions"
                                 label="name"
-                                :disabled="formValue.parent_id"
+                                :disabled="!!formValue.parent_id"
                                 :filterable="true"
                                 :reduce="reduceOption"
                             ></vue-select>

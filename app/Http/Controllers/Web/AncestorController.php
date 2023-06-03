@@ -26,8 +26,6 @@ class AncestorController extends Controller
         $tree = $this->buildTree($firstPerson);
         $trees = [$tree];
 
-        // $this->removeSecondPersonNull($trees);
-
         return response(['tree' => $trees]);
     }
 
@@ -37,65 +35,28 @@ class AncestorController extends Controller
             'firstPerson' => [
                 'id' => $person->id,
                 'name' => $person->name,
-                'spouses' => $person->spouses,
                 'image' => asset($person->img_url),
             ],
-            'secondPerson' => null,
+            'spouses' => $person->spouses,
             'children' => [],
         ];
 
         $spouse = Ancestor::where('spouse_id', $person->id)->first();
-
-        if ($spouse) {
-            $tree['secondPerson'] = [
-                'id' => $spouse->id,
-                'name' => $spouse->name,
-                'image' => asset($spouse->img_url),
-            ];
-        }
-        else {
-            unset($tree['secondPerson']);
-        }
 
         $children = Ancestor::where('parent_id', $person->id)->get();
 
         foreach ($children as $child) {
             $childTree = $this->buildTree($child);
             $new = [
-                'firstPerson' => [
-                    'id' => $childTree['firstPerson']['id'],
-                    'name' => $childTree['firstPerson']['name'],
-                    'spouses' => $childTree['firstPerson']['spouses'],
-                    'image' => $childTree['firstPerson']['image'],
-                ],
-                'secondPerson' => [
-                    'id' => $childTree['secondPerson']['id'] ?? null,
-                    'name' => $childTree['secondPerson']['name'] ?? null,
-                    'image' => $childTree['secondPerson']['image'] ?? null
-                ],
+                'firstPerson' => $childTree['firstPerson'],
+                'spouses' => $childTree['spouses'],
                 'children' => $childTree['children'],
             ];
-
-            if(!isset($childTree['secondPerson'])){
-                unset($new['secondPerson']);
-            }
 
             $tree['children'][] = $new;
         }
 
         return $tree;
-    }
-
-    private function removeSecondPersonNull(&$array)
-    {
-        foreach ($array as &$item) {
-            if ($this->isAssociativeArray($item) && $item['secondPerson'] === null) {
-                unset($item['secondPerson']);
-            }
-            elseif (is_array($item)) {
-                $this->removeSecondPersonNull($item);
-            }
-        }
     }
 
     private function isAssociativeArray($array) {
@@ -112,11 +73,8 @@ class AncestorController extends Controller
         $request->validate([
             'name' => 'required|string',
             'gender' => 'required|integer',
-            'parent_id' => [
-                Rule::requiredIf(!$request->has('spouse_id')),
-                'integer',
-                    ],
-            'nth' => Rule::requiredIf($request->filled('parent_id')),
+            'parent_id' => Rule::requiredIf(is_null($request->input('spouse_id'))),
+            'spouse_id' => Rule::requiredIf(is_null($request->input('parent_id'))),
             'spouse_id' => Rule::requiredIf(!$request->has('parent_id')),
         ]);
 
@@ -147,10 +105,9 @@ class AncestorController extends Controller
 {
     $request->validate([
         'name' => 'required|string',
-        'parent_id' => Rule::requiredIf(!$request->has('spouse_id')),
-        'spouse_id' => Rule::requiredIf(!$request->has('parent_id')),
+        'parent_id' => Rule::requiredIf(is_null($request->input('spouse_id'))),
+        'spouse_id' => Rule::requiredIf(is_null($request->input('parent_id'))),
         'gender' => 'required|in:1,2',
-        'nth' => Rule::requiredIf($request->has('parent_id')),
     ]);
 
     $ancestor = Ancestor::findOrFail($id);

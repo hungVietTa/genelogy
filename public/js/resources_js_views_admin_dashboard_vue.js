@@ -682,46 +682,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'VueFamilyTreeBranch',
+  name: "VueFamilyTreeBranch",
   components: {
     Card: _Card__WEBPACK_IMPORTED_MODULE_0__.default
   },
@@ -767,7 +731,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "FamilyCard",
   props: {
     name: String,
-    image: String,
+    img_url: String,
     source: Object
   },
   methods: {
@@ -1635,8 +1599,8 @@ var render = function() {
                                   options: _vm.parentOptions,
                                   disabled:
                                     (!_vm.ancestor.parent_id &&
-                                      _vm.formValue.id) ||
-                                    _vm.formValue.spouse_id,
+                                      !!_vm.formValue.id) ||
+                                    !!_vm.formValue.spouse_id,
                                   label: "name",
                                   filterable: true,
                                   reduce: _vm.reduceOption
@@ -1725,7 +1689,7 @@ var render = function() {
                                 attrs: {
                                   options: _vm.spouseOptions,
                                   label: "name",
-                                  disabled: _vm.formValue.parent_id,
+                                  disabled: !!_vm.formValue.parent_id,
                                   filterable: true,
                                   reduce: _vm.reduceOption
                                 },
@@ -1987,7 +1951,7 @@ var render = function() {
             staticClass: "vue-family-tree__col",
             class: {
               "vue-family-tree__col_couple":
-                block.firstPerson && block.secondPerson
+                block.firstPerson && block.spouses.length
             }
           },
           [
@@ -1997,7 +1961,7 @@ var render = function() {
                 {
                   class: {
                     "vue-family-tree__couple":
-                      block.firstPerson && block.secondPerson,
+                      block.firstPerson && block.spouses.length,
                     "vue-family-tree__couple_children":
                       block.children && block.children.length
                   }
@@ -2015,7 +1979,7 @@ var render = function() {
                                 return [
                                   _c("Card", {
                                     attrs: {
-                                      image: block.firstPerson.image,
+                                      img_url: block.firstPerson.img_url,
                                       name: block.firstPerson.name,
                                       source: block.firstPerson
                                     },
@@ -2035,102 +1999,50 @@ var render = function() {
                       ])
                     : _vm._e(),
                   _vm._v(" "),
-                  block.thirdPerson
-                    ? _c("div", { staticClass: "vue-family-tree__person" }, [
-                        _c(
-                          "div",
-                          { staticClass: "vue-family-tree__card" },
-                          [
-                            _vm._t(
-                              "card",
-                              function() {
-                                return [
-                                  _c("Card", {
-                                    attrs: {
-                                      image: block.thirdPerson.image,
-                                      name: block.thirdPerson.name,
-                                      source: block.thirdPerson
+                  _vm._l(block.spouses, function(spouse) {
+                    return block.spouses.length
+                      ? [
+                          _c(
+                            "div",
+                            { staticClass: "vue-family-tree__person" },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "vue-family-tree__card" },
+                                [
+                                  _vm._t(
+                                    "card",
+                                    function() {
+                                      return [
+                                        _c("Card", {
+                                          attrs: {
+                                            img_url: spouse.img_url,
+                                            name: spouse.name,
+                                            source: spouse
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.$emit(
+                                                "card-click",
+                                                $event
+                                              )
+                                            }
+                                          }
+                                        })
+                                      ]
                                     },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.$emit("card-click", $event)
-                                      }
-                                    }
-                                  })
-                                ]
-                              },
-                              { item: block.thirdPerson }
-                            )
-                          ],
-                          2
-                        )
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  block.secondPerson
-                    ? _c("div", { staticClass: "vue-family-tree__person" }, [
-                        _c(
-                          "div",
-                          { staticClass: "vue-family-tree__card" },
-                          [
-                            _vm._t(
-                              "card",
-                              function() {
-                                return [
-                                  _c("Card", {
-                                    attrs: {
-                                      image: block.secondPerson.image,
-                                      name: block.secondPerson.name,
-                                      source: block.secondPerson
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.$emit("card-click", $event)
-                                      }
-                                    }
-                                  })
-                                ]
-                              },
-                              { item: block.secondPerson }
-                            )
-                          ],
-                          2
-                        )
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  block.fourthPerson
-                    ? _c("div", { staticClass: "vue-family-tree__person" }, [
-                        _c(
-                          "div",
-                          { staticClass: "vue-family-tree__card" },
-                          [
-                            _vm._t(
-                              "card",
-                              function() {
-                                return [
-                                  _c("Card", {
-                                    attrs: {
-                                      image: block.fourthPerson.image,
-                                      name: block.fourthPerson.name,
-                                      source: block.fourthPerson
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.$emit("card-click", $event)
-                                      }
-                                    }
-                                  })
-                                ]
-                              },
-                              { item: block.fourthPerson }
-                            )
-                          ],
-                          2
-                        )
-                      ])
-                    : _vm._e()
-                ]
+                                    { item: spouse }
+                                  )
+                                ],
+                                2
+                              )
+                            ]
+                          )
+                        ]
+                      : _vm._e()
+                  })
+                ],
+                2
               )
             ]),
             _vm._v(" "),
@@ -2204,7 +2116,7 @@ var render = function() {
       [
         _c("img", {
           staticClass: "avatar-image",
-          attrs: { src: _vm.image, alt: "" }
+          attrs: { src: _vm.img_url, alt: "" }
         })
       ]
     ),

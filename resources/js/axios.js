@@ -15,6 +15,12 @@ axios.interceptors.response.use(
     return response;
   },
   (error) => {
+    const message = get(error,'response.data.message')
+
+    if (message) {
+      Vue.toasted.error(message)
+    }
+
     // Handle error responses
     return Promise.reject(error);
   })
