@@ -32,11 +32,7 @@ class AncestorController extends Controller
     private function buildTree($person)
     {
         $tree = [
-            'firstPerson' => [
-                'id' => $person->id,
-                'name' => $person->name,
-                'image' => asset($person->img_url),
-            ],
+            'firstPerson' => $person,
             'spouses' => $person->spouses,
             'children' => [],
         ];
@@ -92,7 +88,6 @@ class AncestorController extends Controller
     public function show($id)
     {
         $ancestor = Ancestor::with('spouses')->find($id);
-        $ancestor['imgUrl'] = $ancestor['img_url'] ?  asset($ancestor['img_url']) : null;
 
         if (!$ancestor) {
             return response(['message' => 'Ancestor not found']);

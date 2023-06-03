@@ -15,9 +15,9 @@
                         <b-card class="mt-4">
                             <div class="avatar-container">
                                 <img
-                                    v-if="previewUrl || ancestor.imgUrl"
+                                    v-if="previewUrl || ancestor.img_link"
                                     class="avatar-image"
-                                    :src="previewUrl || ancestor.imgUrl"
+                                    :src="previewUrl || ancestor.img_link"
                                 />
                                 <img
                                     v-else

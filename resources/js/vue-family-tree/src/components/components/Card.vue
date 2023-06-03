@@ -1,7 +1,7 @@
 <template>
     <div class="vue-family-card">
         <a href="#" @click.prevent="click" class="avatar-container"
-            ><img class="avatar-image" :src="img_url" alt=""
+            ><img class="avatar-image" :src="img_link" alt=""
         /></a>
 
         <div class="vue-family-card__name">
@@ -17,7 +17,7 @@ export default {
     name: "FamilyCard",
     props: {
         name: String,
-        img_url: String,
+        img_link: String,
         source: Object
     },
     methods: {

@@ -731,7 +731,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "FamilyCard",
   props: {
     name: String,
-    img_url: String,
+    img_link: String,
     source: Object
   },
   methods: {
@@ -1476,11 +1476,11 @@ var render = function() {
                   [
                     _c("b-card", { staticClass: "mt-4" }, [
                       _c("div", { staticClass: "avatar-container" }, [
-                        _vm.previewUrl || _vm.ancestor.imgUrl
+                        _vm.previewUrl || _vm.ancestor.img_link
                           ? _c("img", {
                               staticClass: "avatar-image",
                               attrs: {
-                                src: _vm.previewUrl || _vm.ancestor.imgUrl
+                                src: _vm.previewUrl || _vm.ancestor.img_link
                               }
                             })
                           : _c("img", {
@@ -1979,7 +1979,7 @@ var render = function() {
                                 return [
                                   _c("Card", {
                                     attrs: {
-                                      img_url: block.firstPerson.img_url,
+                                      img_link: block.firstPerson.img_link,
                                       name: block.firstPerson.name,
                                       source: block.firstPerson
                                     },
@@ -2016,7 +2016,7 @@ var render = function() {
                                       return [
                                         _c("Card", {
                                           attrs: {
-                                            img_url: spouse.img_url,
+                                            img_link: spouse.img_link,
                                             name: spouse.name,
                                             source: spouse
                                           },
@@ -2116,7 +2116,7 @@ var render = function() {
       [
         _c("img", {
           staticClass: "avatar-image",
-          attrs: { src: _vm.img_url, alt: "" }
+          attrs: { src: _vm.img_link, alt: "" }
         })
       ]
     ),

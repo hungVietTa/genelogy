@@ -26,7 +26,7 @@
                             <div class="vue-family-tree__card">
                                 <slot name="card" :item="block.firstPerson">
                                     <Card
-                                        :img_url="block.firstPerson.img_url"
+                                        :img_link="block.firstPerson.img_link"
                                         :name="block.firstPerson.name"
                                         :source="block.firstPerson"
                                         @click="$emit('card-click', $event)"
@@ -42,7 +42,7 @@
                                 <div class="vue-family-tree__card">
                                     <slot name="card" :item="spouse">
                                         <Card
-                                            :img_url="spouse.img_url"
+                                            :img_link="spouse.img_link"
                                             :name="spouse.name"
                                             :source="spouse"
                                             @click="$emit('card-click', $event)"

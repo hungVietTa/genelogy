@@ -9,6 +9,8 @@ class Ancestor extends Model
 {
     protected $guarded = ['id'];
 
+    protected $appends = ['img_link'];
+
     protected static function boot()
     {
         parent::boot();
@@ -43,10 +45,9 @@ class Ancestor extends Model
     return $this->hasMany(Ancestor::class, 'spouse_id');
         }
 
-        public function images()
-{
-    return $this->hasMany(Image::class);
-}
-
+    public function getImgLinkAttribute()
+    {
+        return $this->img_url ? asset($this->img_url) : null ;// Assuming img_url is the name of the column in your database
+    }
     use HasFactory;
 }
