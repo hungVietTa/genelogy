@@ -62,7 +62,7 @@
                 </b-row>
                 <b-row>
                     <b-col md="6">
-                        <b-form-group label="Con của ông/bà" v-if="parentOptions.length">
+                        <b-form-group label="Con của ông/bà">
                             <vue-select
                                 v-if="formValue.parent_id || !formValue.id"
                                 v-model="formValue.parent_id"
@@ -95,7 +95,7 @@
                 </b-row>
                 <b-row>
                     <b-col md="6">
-                        <b-form-group id="spouse_idFormGroup" label="( Dâu/Rể ) Là vợ chồng của:" v-if="spouseOptions.length">
+                        <b-form-group id="spouse_idFormGroup" label="( Dâu/Rể ) Là vợ chồng của:">
                             <vue-select
                                 v-if="formValue.spouse_id || !formValue.id"
                                 v-model="formValue.spouse_id"

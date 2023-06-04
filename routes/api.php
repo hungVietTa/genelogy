@@ -34,8 +34,10 @@ Route::get('/ancestors/options', function (Request $request) {
     $ancestors = Ancestor::where('direct', 1)->get();
 
     $response = $ancestors->map(function ($ancestor) {
+        $spouseNames = $ancestor->spouses->pluck('name')->implode(', ');
+
         return [
-            'name' => $ancestor->name,
+            'name' => $ancestor->name . " / " . $spouseNames,
             'id' => $ancestor->id
         ];
     });
