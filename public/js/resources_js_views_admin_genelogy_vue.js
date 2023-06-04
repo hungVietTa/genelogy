@@ -218,10 +218,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
     var formValue = (0,_vue_composition_api__WEBPACK_IMPORTED_MODULE_5__.ref)((0,lodash__WEBPACK_IMPORTED_MODULE_3__.cloneDeep)(input));
     var spouseOptions = (0,_vue_composition_api__WEBPACK_IMPORTED_MODULE_5__.computed)(function () {
-      return store.state.ancestorOptions;
+      var _store$state$ancestor;
+      return (_store$state$ancestor = store.state.ancestorOptions) !== null && _store$state$ancestor !== void 0 ? _store$state$ancestor : [];
     });
     var parentOptions = (0,_vue_composition_api__WEBPACK_IMPORTED_MODULE_5__.computed)(function () {
-      return store.state.ancestorOptions;
+      var _store$state$ancestor2;
+      return (_store$state$ancestor2 = store.state.ancestorOptions) !== null && _store$state$ancestor2 !== void 0 ? _store$state$ancestor2 : [];
     });
     var setNewData = function setNewData() {
       return formValue.value = (0,lodash__WEBPACK_IMPORTED_MODULE_3__.cloneDeep)(input);
@@ -788,7 +790,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".vue-family-tree {\n  height: 1300px !important;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".vue-family-tree {\n  height: 1700px !important;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1659,53 +1661,59 @@ var render = function() {
                     "b-col",
                     { attrs: { md: "6" } },
                     [
-                      _c(
-                        "b-form-group",
-                        { attrs: { label: "Con của ông/bà" } },
-                        [
-                          _vm.formValue.parent_id || !_vm.formValue.id
-                            ? _c("vue-select", {
-                                attrs: {
-                                  options: _vm.parentOptions,
-                                  disabled:
-                                    (!_vm.ancestor.parent_id &&
-                                      !!_vm.formValue.id) ||
-                                    !!_vm.formValue.spouse_id,
-                                  label: "name",
-                                  filterable: true,
-                                  reduce: _vm.reduceOption
-                                },
-                                model: {
-                                  value: _vm.formValue.parent_id,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.formValue, "parent_id", $$v)
-                                  },
-                                  expression: "formValue.parent_id"
-                                }
-                              })
-                            : _c("vue-select", {
-                                attrs: {
-                                  options: _vm.parentOptions,
-                                  disabled: !_vm.ancestor.parent_id,
-                                  label: "name",
-                                  filterable: true,
-                                  reduce: _vm.reduceOption
-                                },
-                                model: {
-                                  value: _vm.ancestor.parent_in_law_id,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.ancestor,
-                                      "parent_in_law_id",
-                                      $$v
-                                    )
-                                  },
-                                  expression: "ancestor.parent_in_law_id"
-                                }
-                              })
-                        ],
-                        1
-                      )
+                      _vm.parentOptions.length
+                        ? _c(
+                            "b-form-group",
+                            { attrs: { label: "Con của ông/bà" } },
+                            [
+                              _vm.formValue.parent_id || !_vm.formValue.id
+                                ? _c("vue-select", {
+                                    attrs: {
+                                      options: _vm.parentOptions,
+                                      disabled:
+                                        (!_vm.ancestor.parent_id &&
+                                          !!_vm.formValue.id) ||
+                                        !!_vm.formValue.spouse_id,
+                                      label: "name",
+                                      filterable: true,
+                                      reduce: _vm.reduceOption
+                                    },
+                                    model: {
+                                      value: _vm.formValue.parent_id,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.formValue,
+                                          "parent_id",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "formValue.parent_id"
+                                    }
+                                  })
+                                : _c("vue-select", {
+                                    attrs: {
+                                      options: _vm.parentOptions,
+                                      disabled: !_vm.ancestor.parent_id,
+                                      label: "name",
+                                      filterable: true,
+                                      reduce: _vm.reduceOption
+                                    },
+                                    model: {
+                                      value: _vm.ancestor.parent_in_law_id,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.ancestor,
+                                          "parent_in_law_id",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "ancestor.parent_in_law_id"
+                                    }
+                                  })
+                            ],
+                            1
+                          )
+                        : _vm._e()
                     ],
                     1
                   ),
@@ -1745,50 +1753,56 @@ var render = function() {
                     "b-col",
                     { attrs: { md: "6" } },
                     [
-                      _c(
-                        "b-form-group",
-                        {
-                          attrs: {
-                            id: "spouse_idFormGroup",
-                            label: "( Dâu/Rể ) Là vợ chồng của:"
-                          }
-                        },
-                        [
-                          _vm.formValue.spouse_id || !_vm.formValue.id
-                            ? _c("vue-select", {
-                                attrs: {
-                                  options: _vm.spouseOptions,
-                                  label: "name",
-                                  disabled: !!_vm.formValue.parent_id,
-                                  filterable: true,
-                                  reduce: _vm.reduceOption
-                                },
-                                model: {
-                                  value: _vm.formValue.spouse_id,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.formValue, "spouse_id", $$v)
-                                  },
-                                  expression: "formValue.spouse_id"
-                                }
-                              })
-                            : _c("div", { staticClass: "form-control" }, [
-                                _vm.ancestor.spouses
-                                  ? _c("span", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.ancestor.spouses
-                                            .map(function(item) {
-                                              return item.name
-                                            })
-                                            .join(" ,")
+                      _vm.spouseOptions.length
+                        ? _c(
+                            "b-form-group",
+                            {
+                              attrs: {
+                                id: "spouse_idFormGroup",
+                                label: "( Dâu/Rể ) Là vợ chồng của:"
+                              }
+                            },
+                            [
+                              _vm.formValue.spouse_id || !_vm.formValue.id
+                                ? _c("vue-select", {
+                                    attrs: {
+                                      options: _vm.spouseOptions,
+                                      label: "name",
+                                      disabled: !!_vm.formValue.parent_id,
+                                      filterable: true,
+                                      reduce: _vm.reduceOption
+                                    },
+                                    model: {
+                                      value: _vm.formValue.spouse_id,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.formValue,
+                                          "spouse_id",
+                                          $$v
                                         )
-                                      )
-                                    ])
-                                  : _vm._e()
-                              ])
-                        ],
-                        1
-                      )
+                                      },
+                                      expression: "formValue.spouse_id"
+                                    }
+                                  })
+                                : _c("div", { staticClass: "form-control" }, [
+                                    _vm.ancestor.spouses
+                                      ? _c("span", [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm.ancestor.spouses
+                                                .map(function(item) {
+                                                  return item.name
+                                                })
+                                                .join(" ,")
+                                            )
+                                          )
+                                        ])
+                                      : _vm._e()
+                                  ])
+                            ],
+                            1
+                          )
+                        : _vm._e()
                     ],
                     1
                   ),
